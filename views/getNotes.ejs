@@ -1,0 +1,87 @@
+<%- include("partials/header.ejs") %>
+
+<div class="back-btn">
+  <form action="/" method="get">
+    <button type="submit">
+      <span class="material-symbols-outlined"> arrow_back_ios </span>
+    </button>
+  </form>
+</div>
+
+<h1 style="margin-left: 60px; font-weight: 500; font-size: 1rem;">
+   Your Notes: 
+</h1>
+
+<div class="">
+  <div>
+    <form action="/sort" method="post">
+      <div class="sort-option" style="margin: 20px 60px;">
+        <select name="sortby" id="">
+          <option value="0">Sort by</option>
+          <option value="created_at">Recent</option>
+          <option value="ltoh">Lowest to highest</option>
+          <option value="htol">Highest to lowest</option>
+        </select>
+        <button type="submit" class="sort-btn">Sort</button>
+      </div>
+    </form>
+    <% if (Notes && Notes.length > 0) { %>
+    <div class="note-container">
+      <% Notes.forEach((book) => { %>
+      <div class="note-card">
+        <div class="note-cover">
+          <% if (book.book_cover) { %>
+          <img
+            src="https://covers.openlibrary.org/b/id/<%= book.book_cover %>-L.jpg"
+            alt="<%= book.title %>"
+            onerror="this.src='/path/to/default-cover.jpg'"
+          />
+          <% } else { %>
+          <img src="/path/to/default-cover.jpg" alt="Cover unavailable" />
+          <% } %>
+        </div>
+        <div class="innerContainer">
+          <div class="bookmark-text">
+            <p class="book-title"><%= book.title %></p>
+            <% if (book.author_name) { %>
+            <p class="book-author"><%= book.author_name %></p>
+            <% } else { %>
+            <p class="book-author">Unknown Author</p>
+            <% } %>
+          </div>
+          <div class="note-text-area">
+            <textarea name="" id="" cols="5" rows="9" style="background-color: transparent;" readonly>
+              <%= book.notes %>
+            </textarea> 
+            <div class="rating">
+              <p>Rating:<%= book.rating %>⭐</p>
+              <p style="font-size: .5rem; color: gray;">Time:  <%= book.created_at %></p>
+            </div>
+          </div>
+          <div class="note-foot">
+            <form action="/editpost" method="post">
+              <input type="hidden" name="book_id" value="<%= book.book_id %>">
+              <button type="submit"><span class="material-symbols-outlined">
+                edit
+                </span></button>
+            </form>
+            <form action="/deletepost" method="post">
+              <input type="hidden" name="book_id" value="<%= book.book_id %>">
+              <button type="submit">
+                <span class="material-symbols-outlined">
+                  delete
+                </span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+    <% } else { %>
+    <div class="alert alert-primary" role="alert" style="margin-left: 60px; width: 20vw;">
+      No books found. Add books!
+    </div>
+    <% } %>
+  </div>
+</div>

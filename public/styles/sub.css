@@ -1,0 +1,389 @@
+.sub-content {
+    padding: 2rem 1rem;
+}
+
+.sub-content p {
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 2rem 0 1rem 0;
+}
+
+.query-bar {
+    padding: 0 1rem 0 0;
+}
+
+.query-bar button {
+    padding: 0.5rem 1rem;
+    margin-right: 5px;
+    border-radius: 1rem;
+    border: none;
+    box-shadow: 1px 1px 3px lightgray;
+    background-color: white;
+    font-weight: 500;
+}
+
+.query-bar button:hover {
+    background-color: black;
+    transition: all .2s ease-in-out;
+    color: white;
+}
+
+.alert {
+    font-weight: 500;
+    font-size: .75rem;
+}
+
+
+.about-card {
+    margin: 30px auto;
+    width: 100%;
+    box-shadow: 1px 1px 2px lightgray;
+    text-align: center;
+}
+
+.abt-card-txt .name {
+    font-weight: 500;
+}
+
+.abt-card-txt .desc {}
+
+.about-card img {
+    width: 100%;
+    border-radius: 50%;
+    border: 2px solid white;
+}
+
+.back-btn {
+    margin: 10px 20px;
+}
+
+.back-btn button {
+    margin: 10px 15px;
+    background-color: transparent;
+    font-weight: 500;
+    border: none;
+    padding: .5rem;
+    border-radius: 50%;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+}
+
+.back-btn button:hover {
+    border-radius: 50%;
+    padding: .5rem;
+    color: white;
+    background-color: black;
+}
+
+.search-result {
+    width: 100vw;
+    height: 100vh;
+    margin: 30px 50px;
+}
+
+.search-card {
+    width: 50vw;
+    height: 300px;
+    display: flex;
+    background-color: #fff;
+    box-shadow: 1px 1px 3px lightgray;
+    border-radius: 1rem;
+    padding: 1rem;
+    align-items: center;
+    margin-bottom: .75rem;
+    align-items: center;
+}
+
+.search-card .search-book-cover {
+    width: 120px;
+    height: 250px;
+}
+
+.search-book-cover img {
+    width: 100%;
+}
+
+.search-book-text {
+    margin-left: 20px;
+    width: 200px;
+}
+
+.search-book-text .search-book-author {
+    font-size: 0.8rem;
+    color: #2563eb;
+}
+
+.search-book-text .search-book-title {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.search-book-foot {
+    margin-left: 200px;
+}
+
+.search-book-foot button {
+    margin: 2px 0px;
+    background-color: transparent;
+    font-weight: 500;
+    border: none;
+    padding: .5rem;
+    border-radius: 50%;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+}
+
+.search-book-foot button:hover {
+    color: #1d4db8;
+}
+
+.write-container {
+    margin: 50px 70px;
+}
+
+.edit-card {
+    width: 550px;
+    display: flex;
+    box-shadow: 1px 1px 3px lightgray;
+    gap: 10px;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.edit-head {
+    width: 310px;
+}
+
+.edit-head .edit-book-title {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+.edit-head .edit-book-author {
+    font-size: .9rem;
+    color: #2563eb;
+    margin-top: -10px;
+}
+
+.edit-head .edit-card-img {
+    width: 250px;
+    height: 450px;
+}
+
+.edit-card-img img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+}
+
+.inner-edit-card {
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.text-area textarea {
+    width: 310px;
+    resize: none;
+    border-radius: 0.5rem;
+    border: 1px solid lightgray;
+    padding: 1rem;
+    outline: none;
+}
+
+.edit-foot {
+    text-align: center;
+}
+
+.edit-foot button {
+    background-color: #2563eb;
+    color: white;
+    border: none;
+    border-radius: .5rem;
+    font-size: .75rem;
+    font-weight: 500;
+    cursor: pointer;
+    padding: .5rem 1.5rem;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.edit-foot button:hover {
+    background-color: #1d4db8;
+}
+
+.rating-container select {
+    background-color: transparent;
+    padding: .25rem;
+    border-radius: .5rem;
+    border: 1px solid lightgray;
+    outline: none;
+    font-weight: 500;
+}
+
+.bookmark-container {
+    width: 100%;
+    height: 100vh;
+    padding: 50px 70px;
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.bookmark-card {
+    width: 330px;
+    height: 450px;
+    box-shadow: 1px 1px 3px lightgray;
+    padding: 1rem;
+    border-radius: .5rem;
+}
+
+.bookmark-cover {
+    width: 280px;
+    height: 300px;
+}
+
+.bookmark-container img {
+    width: 100%;
+    height: 100%;
+    border-radius: .5rem;
+}
+
+.bookmark-text {
+    text-align: center;
+}
+
+.bookmark-text .book-title {
+    font-weight: 1rem;
+}
+
+.bookmark-text .book-author {
+    color: #2563eb;
+    font-size: .9rem;
+}
+
+.bookmark-foot{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.bookmark-foot button{
+    border: none;
+    transition: all .3s ease-in-out;
+}
+
+.bookmark-foot button:hover{
+    color: #2563eb;
+}
+
+.note-container {
+    width: 100%;
+    padding-left: 60px;
+}
+
+.note-card {
+    width: 850px;
+    display: flex;
+    box-shadow: 1px 1px 3px lightgray;
+    gap: 10px;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 20px;
+}
+
+.note-cover {
+    width: 300px;
+    height: 400px;
+}
+
+.note-cover img {
+    width: 100%;
+    height: 100%;
+    border-radius: 0.5rem;
+}
+
+.note-text-area {
+    width: 400px;
+}
+
+.note-text-area textarea {
+    width: 100%;
+    resize: none;
+    border: none;
+    padding: 1rem;
+    outline: none;
+    text-align: left;
+}
+
+.innerContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.rating {
+    margin-left: 15px;
+    font-weight: 500;
+    font-size: 1rem;
+}
+
+.note-foot {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+}
+
+.note-foot button {
+    border: none;
+    margin-left: 5px;
+    transition: .3s all ease-in-out;
+}
+
+.note-foot button:hover {
+    color: #2563eb;
+}
+
+.index-note-card {
+    width: 90vw;
+    display: flex;
+    box-shadow: 1px 1px 3px lightgray;
+    gap: 10px;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-bottom: 20px;
+}
+
+.index-innerContainer {
+    width: 760px;
+    display: flex;
+    flex-direction: column;
+}
+
+.note-text-area .textarea-p {
+    width: 760px;
+}
+
+.viewmore-btn,.sort-btn {
+    background-color: transparent;
+    border: 1px solid #2563eb;
+    padding: .5rem;
+    border-radius: .5rem;
+    transition: all .3s ease-in-out;
+}
+
+.viewmore-btn:hover, .sort-btn:hover{
+    border: none;
+    color: #2563eb;
+}
+
+.sort-option select{
+    background-color: transparent;
+    padding: .25rem;
+    border-radius: .5rem;
+    border: 1px solid lightgray;
+    outline: none;
+    font-weight: 500;
+}

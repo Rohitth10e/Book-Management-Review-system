@@ -1,0 +1,70 @@
+<%- include('partials/header.ejs') %>
+
+<div class="back-btn">
+    <form action="/" method="get">
+      <button type="submit">
+        <span class="material-symbols-outlined"> arrow_back_ios </span>
+      </button>
+    </form>
+  </div>
+  
+  <div class="error-container">
+    <% if(locals.error){ %>
+        <div class="alert alert-danger" role="alert">
+            <%= error %>
+        </div>
+    <% } %>
+  </div>
+  
+  <div class="write-container">
+    <form action="/editedpost" method="post">
+      <div class="edit-card">
+        <div class="edit-card-img">
+          <% if (locals.editPost) { %>
+            <input type="hidden" name="book_id" value="<%= editPost.book_id %>">
+            <% console.log(editPost); %>
+            <input type="hidden" name="cover" value="<%= editPost.book_cover %>">
+            <img
+              src="https://covers.openlibrary.org/b/id/<%= editPost.book_cover %>-L.jpg"
+              alt="<%= editPost.book_cover %>"
+              onerror="this.src='/path/to/default-cover.jpg'"
+            />
+          <% } else { %>
+            <img src="/path/to/default-cover.jpg" alt="Cover unavailable" />
+          <% } %>
+        </div>
+        <div class="inner-edit-card">
+          <div class="edit-head">
+            <% if (locals.editPost) { %>
+              <input type="hidden" name="title" value="<%= editPost.title %>">
+              <input type="hidden" name="author" value="<%= editPost.author_name %>">
+              <p class="edit-book-title"><%= editPost.title %></p>
+              <p class="edit-book-author"><%= editPost.author_name %></p>
+            <% } else { %>
+              <p class="edit-book-title">Unknown Title</p>
+              <p class="edit-book-author">Unknown Author</p>
+            <% } %>
+          </div>
+          <div class="text-area">
+            <textarea name="review" id="" cols="5" rows="9">
+              <%= editPost ? editPost.notes : '' %>
+            </textarea>
+            <div class="rating-container">
+              <select name="rating" id="#select-rating">
+                <option value="0">Set rating</option>
+                <option value="1" <%= editPost && editPost.rating === 1 ? 'selected' : '' %>>1</option>
+                <option value="2" <%= editPost && editPost.rating === 2 ? 'selected' : '' %>>2</option>
+                <option value="3" <%= editPost && editPost.rating === 3 ? 'selected' : '' %>>3</option>
+                <option value="4" <%= editPost && editPost.rating === 4 ? 'selected' : '' %>>4</option>
+                <option value="5" <%= editPost && editPost.rating === 5 ? 'selected' : '' %>>5</option>
+              </select>
+            </div>
+          </div>
+          <div class="edit-foot">
+            <button type="submit">Submit</button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+  

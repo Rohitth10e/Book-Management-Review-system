@@ -1,0 +1,272 @@
+<%- include('partials/header') %>
+
+<main>
+  <nav class="navbar">
+    <div class="logo">
+      <p>BookNotes</p>
+    </div>
+    <div class="searchBar">
+      <form action="/" method="get" style="display: flex; align-items: center">
+        <input
+          type="search"
+          name="bookname"
+          autofocus
+          placeholder="<%= locals.message ? message: 'search for the books' %>"
+        />
+        <button type="submit" id="searchBtn">
+          <span class="material-symbols-outlined"> search </span>
+        </button>
+      </form>        
+    </div>
+    <div class="query-bar">
+      <form action="/getNotes" method="get">
+        <button type="submit" style="display: flex; align-items: center;">Notes<span class="material-symbols-outlined">
+          edit_document
+          </span></button>
+      </form>
+      <form action="/bookmark" method="get">
+        <button type="submit" style="display: flex; align-items: center;">Books<span class="material-symbols-outlined">
+          collections_bookmark
+          </span></button>
+      </form>
+      <form action="/logout" method="get">
+        <button type="submit">
+          logout
+        </button>
+      </form>
+    </div>
+  </nav>
+  <section class="main-content">
+    <% if(locals.error){%>
+      <div class="alert alert-danger" role="alert">
+        <%= error %>
+      </div>
+    <% } %>
+    <h3 style="margin-left: 10px; font-weight: 500; font-size: 1.5rem;">Hey <span style="color: #3a3a3c;"><%= username %></span>👋</h3>
+
+    <div class="sub-content">
+      <p>Romance</p>
+      <div>
+        <% if (romance && romance.length > 0) { %>
+        <div class="book-container">
+          <% romance.forEach((book) => { %>
+          <div class="book-card">
+            <div class="book-cover">
+              <% if (book.cover_i) { %>
+              <img
+                src="https://covers.openlibrary.org/b/id/<%= book.cover_i %>-L.jpg"
+                alt="<%= book.title %>"
+                onerror="this.src='/path/to/default-cover.jpg'"
+              />
+              <% } else { %>
+              <img src="./images/defaultcover.jpg" alt="Cover unavailable" />
+              <% } %>
+            </div>
+            <div class="book-text">
+              <p class="book-title"><%= book.title %></p>
+              <% if (book.author_name) { %>
+              <p class="book-author"><%= book.author_name.join(', ') %></p>
+              <% } else { %>
+              <p class="book-author">Unknown Author</p>
+              <% } %>
+            </div>
+            <div class="book-foot">
+              <!-- <form action="/addBook" method="post">
+                <input type="hidden" name="book_id" value="<%= book.isbn[0] %>">
+                <input type="hidden" name="book_name" value="<%= book.title %>" />
+                <input
+                  type="hidden"
+                  name="author_name"
+                  value="<%= book.author_name ? book.author_name.join(', ') : 'Unknown Author' %>"
+                />
+                <input
+                  type="hidden"
+                  name="book_cover"
+                  value="<%= book.cover_i || '' %>"
+                />
+
+                <button type="submit">
+                  <span class="material-symbols-outlined">
+                  add_circle
+                  </span>
+                </button>
+              </form> -->
+              <form action="/write" method="post">
+                <input type="hidden" name="book_id" value="<%= book.isbn[0] %>">
+                <input type="hidden" name="book_name" value="<%= book.title %>" />
+                <input
+                  type="hidden"
+                  name="author_name"
+                  value="<%= book.author_name ? book.author_name.join(', ') : 'Unknown Author' %>"
+                />
+                <input
+                  type="hidden"
+                  name="book_cover"
+                  value="<%= book.cover_i || '' %>"
+                />
+                <button type="submit">
+                  <span class="material-symbols-outlined">
+                  rate_review
+                  </span>
+                </button>
+              </form>
+            </div>
+          </div>
+          <% }); %>
+        </div>
+        <% } else { %>
+        <p>No romance books found. Add books!</p>
+        <% } %>
+      </div>
+      <p>Mystery</p>
+      <div></div>
+        <% if (mystery && mystery.length > 0) { %>
+        <div class="book-container">
+          <% mystery.forEach((book) => { %>
+          <div class="book-card">
+            <div class="book-cover">
+              <% if (book.cover_i) { %>
+              <img
+                src="https://covers.openlibrary.org/b/id/<%= book.cover_i %>-L.jpg"
+                alt="<%= book.title %>"
+                onerror="this.src='/path/to/default-cover.jpg'"
+              />
+              <% } else { %>
+              <img src="./images/defaultcover.jpg" alt="Cover unavailable" />
+              <% } %>
+            </div>
+            <div class="book-text">
+              <p class="book-title"><%= book.title %></p>
+              <% if (book.author_name) { %>
+              <p class="book-author"><%= book.author_name.join(', ') %></p>
+              <% } else { %>
+              <p class="book-author">Unknown Author</p>
+              <% } %>
+            </div>
+            <div class="book-foot">
+              <!-- <form action="/addBook" method="post">
+                <input type="hidden" name="book_id" value="<%= book.isbn[0] %>">
+                <input type="hidden" name="book_name" value="<%= book.title %>" />
+                <input
+                  type="hidden"
+                  name="author_name"
+                  value="<%= book.author_name ? book.author_name.join(', ') : 'Unknown Author' %>"
+                />
+                <input
+                  type="hidden"
+                  name="book_cover"
+                  value="<%= book.cover_i || '' %>"
+                />
+
+                <button type="submit">
+                  <span class="material-symbols-outlined">
+                  add_circle
+                  </span>
+                </button>
+              </form> -->
+              <form action="/write" method="post">
+                <input type="hidden" name="book_id" value="<%= book.isbn[0]%>">
+                <input type="hidden" name="book_name" value="<%= book.title %>" />
+                <input
+                  type="hidden"
+                  name="author_name"
+                  value="<%= book.author_name ? book.author_name.join(', ') : 'Unknown Author' %>"
+                />
+                <input
+                  type="hidden"
+                  name="book_cover"
+                  value="<%= book.cover_i || '' %>"
+                />
+                <button type="submit">
+                  <span class="material-symbols-outlined">
+                  rate_review
+                  </span>
+                </button>
+              </form>
+            </div>
+          </div>
+          <% }); %>
+        </div>
+        <% } else { %>
+        <p>No romance books found. Add books!</p>
+        <% } %>
+      </div>
+    </div>
+    <h3 style="margin-left: 10px; font-weight: 500; font-size: 1.5rem;">Your most recent note:</h3>
+    <div>
+      <% if (recents && recents.length > 0) { %>
+      <div class="index-note-container">
+        <% recents.forEach((book) => { %>
+        <div class="index-note-card">
+          <div class="note-cover">
+            <% if (book.book_cover) { %>
+            <img
+              src="https://covers.openlibrary.org/b/id/<%= book.book_cover %>-L.jpg"
+              alt="<%= book.title %>"
+              onerror="this.src='/path/to/default-cover.jpg'"
+            />
+            <% } else { %>
+            <img src="./images/defaultcover.jpg" alt="Cover unavailable" />
+            <% } %>
+          </div>
+          <div class="index-innerContainer">
+            <div class="bookmark-text">
+              <p class="book-title"><%= book.title %></p>
+              <% if (book.author_name) { %>
+              <p class="book-author"><%= book.author_name %></p>
+              <% } else { %>
+              <p class="book-author">Unknown Author</p>
+              <% } %>
+            </div>
+            <div class="note-text-area">
+              <textarea name="" id="" cols="5" rows="9" style="background-color: transparent;" readonly class="textarea-p">
+                <%= book.notes %>
+              </textarea> 
+              <div class="rating">
+                <p>Rating:<%= book.rating %>⭐</p>
+                <p style="font-size: .5rem; color: gray;">Time:  <%= book.created_at %></p>
+              </div>
+            </div>
+            <div class="note-foot">
+              <form action="/editpost" method="post">
+                <input type="hidden" name="book_id" value="<%= book.book_id %>">
+                <button type="submit"><span class="material-symbols-outlined">
+                  edit
+                  </span></button>
+              </form>
+              <form action="/deletepost" method="post">
+                <input type="hidden" name="book_id" value="<%= book.book_id %>">
+                <button type="submit">
+                  <span class="material-symbols-outlined">
+                    delete
+                  </span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <% }); %>
+      </div>
+      <% } else { %>
+        <div class="alert alert-primary" role="alert" style="text-align: center; width: 30vw; margin: 15px auto;">
+          No notes found, add notes!
+        </div>
+      <% } %>
+      <form action="/getNotes" method="get" style="text-align: center;">
+        <button type="submit" class="viewmore-btn">View more</button>
+      </form>
+    </div>
+  </section>
+</main>
+
+<script>
+  //   const searchBtn = document.getElementById("searchBtn");
+  //   const displayBook = document.querySelector(".displayBook");
+  //   if (searchBtn) {
+  //     if (displayBook.length > 0) {
+  //       displayBook.style.display = "block";
+  //     } else {
+  //       displayBook.style.display = "none";
+  //     }
+  //   }
+</script>

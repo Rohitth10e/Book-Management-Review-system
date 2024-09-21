@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./sub.css" />
+    <style>
+      .back-btn button {
+        margin: 10px 15px;
+        background-color: transparent;
+        font-weight: 500;
+        border: none;
+        padding: 0.5rem;
+        border-radius: 50%;
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+      }
+
+      .back-btn button:hover {
+        border-radius: 50%;
+        padding: 0.5rem;
+        color: white;
+        background-color: black;
+      }
+      .write-container {
+        margin: 50px 70px;
+      }
+      .edit-card {
+        width: 550px;
+        display: flex;
+        box-shadow: 1px 1px 3px lightgray;
+        gap: 10px;
+        padding: 1rem;
+        border-radius: 1rem;
+      }
+      .edit-head{
+        width: 310px;
+      }
+      .edit-head .edit-book-title{
+        font-size: 1rem;
+        font-weight: 600;
+      }
+      .edit-head .edit-book-author{
+        font-size: .9rem;
+        color: #2563eb;
+        margin-top: -10px;
+      }
+      .edit-head 
+      .edit-card-img {
+        width: 250px;
+      }
+      .edit-card-img img {
+        width: 100%;
+        border-radius: 0.5rem;
+      }
+      .inner-edit-card {
+        display: flex;
+        flex-direction: column;
+        /* align-items: center; */
+        justify-content: center;
+      }
+      .text-area textarea {
+        width: 310px;
+        resize: none;
+        border-radius: 0.5rem;
+        border: 1px solid lightgray;
+        padding: 1rem;
+        outline: none;
+      }
+      .edit-foot{
+        text-align: center;
+      }
+      .edit-foot button {
+        background-color: #2563eb;
+        color: white;
+        border: none;
+        border-radius: .5rem;
+        font-size: .75rem;
+        font-weight: 500;
+        cursor: pointer;
+        padding: .5rem 1.5rem;
+        margin-top: 1rem;
+        transition: background-color 0.3s ease;
+      }
+
+      .edit-foot button:hover {
+        background-color: #1d4db8;
+      }
+
+      .rating-container select{
+        background-color: transparent;
+        padding: .25rem;
+        border-radius: .5rem;
+        border: 1px solid lightgray;
+        outline: none;
+        font-weight: 500;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- <%- include("partials/header.ejs")  %> -->
+
+    <!-- <div class="write-container">
+    <form action="/submitReview" method="post">
+        <div class="edit-card">
+            <div class="edit-card-img">
+                <% if (cover) { %>
+                    <img
+                      src="https://covers.openlibrary.org/b/id/<%= cover %>-L.jpg"
+                      alt="<%= cover %>"
+                      onerror="this.src='/path/to/default-cover.jpg'"
+                    />
+                  <% } else { %>
+                    <img src="/path/to/default-cover.jpg" alt="Cover unavailable" />
+                  <% } %>
+            </div>
+            <div class="edit-head">
+                <p class="edit-book-title"><%= title %></p>
+                <p class="edit-book-author"><%= author %></p>
+            </div>
+            <div class="text-area">
+                <textarea name="review" id=""></textarea>
+                <div class="star-rating">
+                    <input type="radio" id="star1" name="rating" value="1" />
+                    <label for="star1" class="star">★</label>
+                    <input type="radio" id="star2" name="rating" value="2" />
+                    <label for="star2" class="star">★</label>
+                    <input type="radio" id="star3" name="rating" value="3" />
+                    <label for="star3" class="star">★</label>
+                    <input type="radio" id="star4" name="rating" value="4" />
+                    <label for="star4" class="star">★</label>
+                    <input type="radio" id="star5" name="rating" value="5" />
+                    <label for="star5" class="star">★</label>
+                  </div>                  
+            </div>
+        </div>
+    </form>
+</div> -->
+
+    
+  </body>
+</html>

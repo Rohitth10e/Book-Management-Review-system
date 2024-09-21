@@ -1,0 +1,67 @@
+<%- include("partials/header.ejs") %>
+
+<div class="back-btn">
+  <form action="/" method="get">
+    <button type="submit">
+      <span class="material-symbols-outlined"> arrow_back_ios </span>
+    </button>
+  </form>
+</div>
+
+<h1 style="margin-left: 60px; font-weight: 500; font-size: 1rem;">
+    Books you've added
+</h1>
+
+<div class="">
+  <div>
+    <% if (books && books.length > 0) { %>
+    <div class="bookmark-container">
+      <% books.forEach((book) => { %>
+      <div class="bookmark-card">
+        <div class="bookmark-cover">
+          <% if (book.book_cover) { %>
+          <img
+            src="https://covers.openlibrary.org/b/id/<%= book.book_cover %>-L.jpg"
+            alt="<%= book.title %>"
+            onerror="this.src='/path/to/default-cover.jpg'"
+          />
+          <% } else { %>
+          <img src="/path/to/default-cover.jpg" alt="Cover unavailable" />
+          <% } %>
+        </div>
+        <div class="bookmark-text">
+          <p class="book-title"><%= book.title %></p>
+          <% if (book.author_name) { %>
+          <p class="book-author"><%= book.author_name %></p>
+          <% } else { %>
+          <p class="book-author">Unknown Author</p>
+          <% } %>
+        </div>
+        <div class="bookmark-foot">
+          <!-- <form action="/editpost" method="post">
+            <input type="hidden" name="book_id" value="<%= book.book_id %>">
+            <button type="submit">
+              <span class="material-symbols-outlined">
+              edit
+              </span>
+            </button>
+          </form> -->
+          <form action="/deletepost" method="post">
+            <input type="hidden" name="book_id" value="<%= book.book_id %>">
+            <button type="submit">
+              <span class="material-symbols-outlined">
+                delete
+              </span>
+            </button>
+          </form>
+        </div>
+      </div>
+      <% }); %>
+    </div>
+    <% } else { %>
+      <div class="alert alert-primary" role="alert" style="margin-left: 60px; width: 20vw;">
+        No books found. Add books!
+      </div>
+    <% } %>
+  </div>
+</div>

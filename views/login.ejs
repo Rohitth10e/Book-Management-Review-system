@@ -1,0 +1,63 @@
+<%- include('partials/header') %>
+
+<div id="login" class="container-fluid">
+    <div class="reg-banner">
+      <div class="logo">
+        <h3>BookNotes</h3>
+      </div>
+      <div class="reg-banner-txt">
+        <h1>Hey there!</h1>
+        <p>Login to get started</p>
+      </div>
+      <div class="reg-banner-foot">
+          <p>Don't have an account?</p>
+          <form action="/register" method="get" class="get-login">
+              <button type="submit">Register</button>
+          </form>
+      </div>
+    </div>
+    <form action="/login" method="post" id="login-form">
+
+      <% if(locals.error){%>
+        <div class="alert alert-danger" role="alert">
+          <%= error %>
+        </div>
+      <% } %>
+
+      <% if(locals.message){%>
+        <div class="alert alert-danger" role="alert">
+          <%= message %>
+        </div>
+      <% } %>
+
+      
+
+        <div class="login-head" style="display: flex;align-items: center; gap: 2px; padding: 0.5rem 0rem;">
+            <i class="fa-solid fa-ghost" style="font-size: 1.3rem;"></i>
+            <h3 style="font-size: 1.5rem;">Welcome back!</h3>
+        </div>
+      <label for="username" class="label username-label">
+          <span class="material-symbols-outlined icon"> person </span>
+        <input
+          type="text"
+          name="username"
+          placeholder="username"
+          autocomplete="off"
+          required
+        />
+      </label>
+      <label for="passsword" class="label passsword-label">
+          <span class="material-symbols-outlined icon">
+              password
+              </span>
+        <input
+          type="password"
+          name="password"
+          placeholder="password"
+          autocomplete="off"
+          required
+        />
+      </label>
+      <button type="submit">Login</button>
+    </form>
+  </div>

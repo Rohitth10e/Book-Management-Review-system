@@ -1,0 +1,55 @@
+<%- include("partials/header.ejs")  %>
+
+<div class="back-btn">
+  <form action="/" method="get">
+    <button type="submit">
+      <span class="material-symbols-outlined"> arrow_back_ios </span>
+    </button>
+  </form>
+</div>
+
+
+
+<div class="write-container">
+  <form action="/review" method="post">
+    <div class="edit-card">
+      <div class="edit-card-img">
+        <% if (cover) { %>
+          <input type="hidden" name="cover" value="<%= cover %>">
+          <img
+            src="https://covers.openlibrary.org/b/id/<%= cover %>-L.jpg"
+            alt="<%= cover %>"
+            onerror="this.src='/path/to/default-cover.jpg'"
+          />
+        <% } else { %>
+          <img src="/path/to/default-cover.jpg" alt="Cover unavailable" />
+        <% } %>
+      </div>
+      <div class="inner-edit-card">
+        <div class="edit-head">
+          <input type="hidden" name="title" value="<%= title %>">
+          <input type="hidden" name="author" value="<%= author %>">
+          <p class="edit-book-title"><%= title %></p>
+          <p class="edit-book-author"><%= author %></p>
+        </div>
+        <div class="text-area">
+          <textarea name="review" id="" cols="5" rows="9" placeholder="Write your note here"></textarea
+          >
+          <div class="rating-container">
+            <select name="rating" id="#select-rating">
+              <option value="0">Set rating</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+        </div>
+        <div class="edit-foot">
+          <button type="submit">Submit</button>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
