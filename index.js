@@ -88,10 +88,21 @@ async function checkReview(req,book_id,user_id){
 
 async function addBook(book_id, book_name, author_name, book_cover, user_id) {
   try {
+    const existingBook = await db.query(
+      `SELECT * FROM books WHERE book_id = $1 AND user_id = $2`,
+      [book_id, user_id.id]
+    );
+
+    if (existingBook.rows.length > 0) {
+      console.log("Book already exists for this user.");
+      return { success: false, error: "Duplicate book" };
+    }
+
     await db.query(
       `INSERT INTO books (book_id, title, author_name, book_cover, user_id) VALUES ($1, $2, $3, $4, $5)`,
       [book_id, book_name, author_name, book_cover, user_id.id]
     );
+
     console.log("Inserted into the table books");
     return { success: true };
   } catch (err) {
@@ -99,6 +110,21 @@ async function addBook(book_id, book_name, author_name, book_cover, user_id) {
     return { success: false, error: err.message };
   }
 }
+
+
+// async function addBook(book_id, book_name, author_name, book_cover, user_id) {
+//   try {
+//     await db.query(
+//       `INSERT INTO books (book_id, title, author_name, book_cover, user_id) VALUES ($1, $2, $3, $4, $5)`,
+//       [book_id, book_name, author_name, book_cover, user_id.id]
+//     );
+//     console.log("Inserted into the table books");
+//     return { success: true };
+//   } catch (err) {
+//     console.error("Error inserting book:", err.message);
+//     return { success: false, error: err.message };
+//   }
+// }
 
 app.get("/", isAuthenticated, async (req, res) => {
   const searchQuery = req.query.bookname;
