@@ -64,15 +64,17 @@ async function getRecents(req) {
     "SELECT id FROM users WHERE username = $1",
     [req.session.username]
   );
+  
   const userId = userIdResult.rows[0]?.id;
   let response = await db.query(
-    "SELECT b.book_id, b.title, b.author_name, r.created_at ,b.book_cover, r.rating, r.notes " +
-      "FROM books b " +
-      "JOIN reviews r ON b.book_id = r.book_id " +
-      "WHERE b.user_id = $1 " +
-      "ORDER BY r.created_at DESC LIMIT 3",
+    "SELECT b.book_id, b.title, b.author_name, r.created_at, b.book_cover, r.rating, r.notes " +
+    "FROM books b " +
+    "JOIN reviews r ON b.book_id = r.book_id AND b.user_id = r.user_id " + // Ensure space before WHERE
+    "WHERE b.user_id = $1 " +
+    "ORDER BY r.created_at DESC LIMIT 3",
     [userId]
   );
+  
   return response.rows;
 }
 
